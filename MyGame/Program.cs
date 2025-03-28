@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 
 namespace MyGame
 {
     public class Enemy
     {
-        private string name;
-        private int health;
-        private int shield;
+        private static void Main(string[] args)
+        {
+            Enemy[] enemies = new Enemy[int.Parse(args[0])];
 
         public Enemy(string name)
         {
