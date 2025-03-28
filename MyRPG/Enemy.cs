@@ -89,5 +89,9 @@ namespace MyRPG
         {
             return powerUpCollected;
         }
+
+        internal class SetEnemyInRoom
+        {
+        }
     }
 }
