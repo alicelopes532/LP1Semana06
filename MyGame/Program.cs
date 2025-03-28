@@ -1,38 +1,39 @@
-using System;
+﻿using System;
 
 namespace MyGame
 {
-    public class Enemy
+    public class Program
     {
         private static void Main(string[] args)
         {
             Enemy[] enemies = new Enemy[int.Parse(args[0])];
 
-        public Enemy(string name)
-        {
-            this.name = name;
-            health = 100;
-            shield = 0;
-        }
-        public static void Main()
-        {
-        }
-
-          public string GetName()
-        {
-            return name;
-        }
-        public void TakeDamage(float damage)
-        {
-            shield -= (int)damage;
-            if (shield < 0)
+            for(int i = 0; i < enemies.Length; i++)
             {
-                float damageStillToInflict = -shield;
-                shield = 0;
-                health -= (int)damageStillToInflict;
-                if (health < 0) health = 0;
+                Console.Write($"Enemy name {i + 1}: ");
+                enemies[i] = new Enemy(Console.ReadLine());
             }
-            
+
+            foreach(Enemy enemy in enemies)
+            {
+                Console.WriteLine($"{enemy.GetName()} {enemy.GetHealth()} {enemy.GetShield()}");
+            }
+
+            enemies[0].PickupPowerUp(PowerUp.Shield, 40f);
+
+            Console.WriteLine($"{enemies[0].GetName()} {enemies[0].GetHealth()} {enemies[0].GetShield()}");
+
+            enemies[0].TakeDamage(50f);
+
+            Console.WriteLine($"{enemies[0].GetName()} {enemies[0].GetHealth()} {enemies[0].GetShield()}");
+
+            enemies[0].PickupPowerUp(PowerUp.Health, 50f);
+
+            Console.WriteLine($"{enemies[0].GetName()} {enemies[0].GetHealth()} {enemies[0].GetShield()}");
+
+            Console.WriteLine(Enemy.GetTotalPowerUpCount());
+
+
         }
     }
 }
